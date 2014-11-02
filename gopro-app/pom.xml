@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.realsoft.android</groupId>
+		<artifactId>com.realsoft.android.gopro</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>gopro-app</artifactId>
+	<packaging>apk</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.greenrobot</groupId>
+			<artifactId>eventbus</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>GoProJavaApi</groupId>
+			<artifactId>GoProJavaApi</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.thalmic</groupId>
+			<artifactId>myosdk</artifactId>
+			<type>aar</type>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- <plugin> -->
+				<!-- <groupId>com.jayway.maven.plugins.android.generation2</groupId> -->
+				<!-- <artifactId>android-maven-plugin</artifactId> -->
+				<!-- <version>3.8.2</version> -->
+
+				<!-- <configuration> -->
+				<!-- <manifest> -->
+				<!-- <debuggable>true</debuggable> -->
+				<!-- </manifest> -->
+				<!-- </configuration> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>manifestUpdate</id> -->
+				<!-- <phase>process-resources</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>manifest-update</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- <execution> -->
+				<!-- <id>alignApk</id> -->
+				<!-- <phase>package</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>zipalign</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
+
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.jayway.maven.plugins.android.generation2
+										</groupId>
+										<artifactId>
+											android-maven-plugin
+										</artifactId>
+										<versionRange>
+											[3.8.2,)
+										</versionRange>
+										<goals>
+											<goal>consume-aar</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<version>3.8.2</version>
+				<extensions>true</extensions>
+				<configuration>
+					<emulatorAvd>default</emulatorAvd>
+					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
+					<resourceDirectory>${project.basedir}/res</resourceDirectory>
+					<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+					<sdk>
+						<platform>18</platform>
+					</sdk>
+					<mergeManifests>true</mergeManifests>
+
+
+				</configuration>
+				<!-- <configuration> -->
+				<!-- <manifest> -->
+				<!-- <debuggable>true</debuggable> -->
+				<!-- </manifest> -->
+				<!-- </configuration> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>manifestUpdate</id> -->
+				<!-- <phase>process-resources</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>manifest-update</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- <execution> -->
+				<!-- <id>alignApk</id> -->
+				<!-- <phase>package</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>zipalign</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+			</plugin>
+		</plugins>
+	</build>
+</project>

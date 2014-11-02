@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/build/intermediates/exploded-aar/com.thalmic/myosdk/0.6.0/res/values/values.xml -->
+    <eat-comment />
+
+    <color name="myosdk__button_orange">#FF8000</color>
+    <color name="myosdk__button_red">#AE0922</color>
+    <color name="myosdk__thalmic_blue">#00BCDD</color>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/build/intermediates/exploded-aar/com.thalmic/myosdk/0.6.0/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="myosdk__activity_horizontal_margin">16dp</dimen>
+    <dimen name="myosdk__activity_vertical_margin">16dp</dimen>
+    <dimen name="myosdk__fragment_scan_window_height">0dp</dimen>
+    <dimen name="myosdk__fragment_scan_window_width">0dp</dimen>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="action_settings">Setting</string>
+    <string name="app_name">myo-hero</string>
+    <string name="camera_status">Turned off!</string>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/strings_go_pro.xml -->
+    <eat-comment />
+
+    <string name="gopro_command_camera_mode">Change camera mode</string>
+    <string name="gopro_command_connect">Connecting to GoPro wifi network</string>
+    <string name="gopro_command_disconnect">Disconnecting to GoPro wifi network</string>
+    <string name="gopro_command_start_preview">Start video preview</string>
+    <string name="gopro_command_start_record">Start recording a video</string>
+    <string name="gopro_command_stop_preview">Stop video preview</string>
+    <string name="gopro_command_stop_record">Stop video recording</string>
+    <string name="gopro_command_take_picture">Take a picture</string>
+    <string name="gopro_command_turn_off">Turn off GoPro</string>
+    <string name="gopro_command_turn_on">Turn on GoPro</string>
+    <string name="gopro_status_power_off">Turned off</string>
+    <string name="gopro_status_power_on">Turned on</string>
+    <string name="gopro_status_ready">Ready</string>
+    <string name="gopro_status_recording">Recording...</string>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="myo_status_connected">Myo connected</string>
+    <string name="myo_status_disconnected">Myo disconnected</string>
+    <string name="myo_status_locked">Locked</string>
+    <string name="myo_status_unlocked">Unlocked</string>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/build/intermediates/exploded-aar/com.thalmic/myosdk/0.6.0/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="myosdk__action_scan">Scan</string>
+    <string name="myosdk__action_stop_scan">Stop Scan</string>
+    <string name="myosdk__firmware_incompatible">Firmware version incompatible.</string>
+    <string name="myosdk__title_activity_scan">Choose a Myo</string>
+    <string name="myosdk__unknown_myo">Unknown Myo</string>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="pose">Pose: %s</string>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/strings_preferences.xml -->
+    <eat-comment />
+
+    <string name="pref_cat_gopro">GoPro Hero3+ settings</string>
+    <string name="pref_cat_myo">Myo settings</string>
+    <string name="pref_default_gopro_pw">gopro</string>
+    <string name="pref_default_gopro_url">10.5.5.9</string>
+    <string name="pref_default_gopro_wifi_ssid">gopro</string>
+    <string name="pref_desc_gopro_pw">The password used to connect GoPro wifi network</string>
+    <string name="pref_desc_gopro_url">The url where your GoPro is available on the network</string>
+    <string name="pref_desc_gopro_wifi_ssid">The SSID of the GoPro wifi network</string>
+    <string name="pref_header_general">Settings</string>
+    <string name="pref_sum_myo">Manage Myo armband setting</string>
+    <string name="pref_title_gopro_pw">GoPro Wifi password</string>
+    <string name="pref_title_gopro_url">GoPro url</string>
+    <string name="pref_title_gopro_wifi_ssid">GoPro network SSID</string>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="title_activity_main">MyoHero</string>
+    <string name="title_activity_settings">Settings</string>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <!-- From: file:/D:/dev/workspace_android/com.realsoft.android.gopro/gopro-app/build/intermediates/exploded-aar/com.thalmic/myosdk/0.6.0/res/values/values.xml -->
+    <eat-comment />
+
+    <style name="myosdk__PopupActivityTheme" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+        <item name="android:windowActionBar">true</item>
+        <item name="android:windowActionModeOverlay">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="myosdk__ScanActivityTheme" parent="android:Theme.Holo.Light" />
+
+</resources>

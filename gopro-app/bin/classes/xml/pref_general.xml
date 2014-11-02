@@ -1,0 +1,45 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_cat_gopro" >
+
+        <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+        <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+        <EditTextPreference
+            android:capitalize="words"
+            android:defaultValue="@string/pref_default_gopro_pw"
+            android:inputType="text"
+            android:key="gopro_pw"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_gopro_pw" />
+        <EditTextPreference
+            android:capitalize="words"
+            android:defaultValue="@string/pref_default_gopro_wifi_ssid"
+            android:inputType="text"
+            android:key="gopro_ssid"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_gopro_wifi_ssid" />
+        <EditTextPreference
+            android:capitalize="words"
+            android:defaultValue="@string/pref_default_gopro_url"
+            android:inputType="text"
+            android:key="gopro_url"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_gopro_url" />
+    </PreferenceCategory>
+
+    <Preference
+        android:summary="@string/pref_sum_myo"
+        android:title="@string/pref_cat_myo" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.thalmic.myo.scanner.ScanActivity"
+            android:targetPackage="com.thalmic.myo" />
+    </Preference>
+
+</PreferenceScreen>

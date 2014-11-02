@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\pre-dexed\debug\guava-18.0-e127c073dd038fdaa38781606c9d5e2bb212f3c8.jar"
+        jar="C:\Users\szabol\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\18.0\cce0823396aa693798f8882e64213b1772032b09\guava-18.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="cce0823396aa693798f8882e64213b1772032b09"/>
+    <item
+        dex="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\pre-dexed\debug\android-support-v4-517a48148575e9c68468a5f106e8e608c640e008.jar"
+        jar="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="3b20dc871d179ba476082efe543dc1b38db46e30"/>
+    <item
+        dex="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\pre-dexed\debug\classes-fe96e145aaa7ab7be913d711bb5ff24b094d76ac.jar"
+        jar="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\exploded-aar\com.thalmic\myosdk\0.6.0\classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="99725a5ad7b296c3f0aacc3cccc892ffee6a88a8"/>
+    <item
+        dex="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\pre-dexed\debug\native-libs-f5e1aab1dc70712fbdddc1485f759a6840722fad.jar"
+        jar="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\exploded-aar\com.thalmic\myosdk\0.6.0\libs\native-libs.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="a8d40dfc06ce9040cbe2da440a887808d4f275bc"/>
+    <item
+        dex="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\pre-dexed\debug\eventbus-2.2.1-a9e2fed02eab4264fd442fe24533d2cfb4661624.jar"
+        jar="C:\Users\szabol\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.2.1\a18ff12a9ab5ae52fd30d42f134517997568231e\eventbus-2.2.1.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e"/>
+    <item
+        dex="D:\dev\workspace_android\com.realsoft.android.gopro\gopro-app\build\intermediates\pre-dexed\debug\GoProJavaApi-0.0.1-SNAPSHOT-29a40034accbc5392ea9068d559817f8c0833cdc.jar"
+        jar="C:\Users\szabol\.m2\repository\GoProJavaApi\GoProJavaApi\0.0.1-SNAPSHOT\GoProJavaApi-0.0.1-SNAPSHOT.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="b629ecf3c20d7c20bc9c6b9880da72f55d8363fd"/>
+
+</pre-dex-items>
