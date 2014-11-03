@@ -7,10 +7,12 @@ package com.realsoft.gopro;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.IBinder;
+import android.text.format.DateUtils;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.google.common.collect.Iterables;
 import com.realsoft.gopro.event.MyoErrorEvent;
 import com.realsoft.gopro.event.MyoPoseEvent;
 import com.realsoft.gopro.event.MyoState;
@@ -20,11 +22,21 @@ import com.thalmic.myo.Hub;
 import com.thalmic.myo.Myo;
 import com.thalmic.myo.Pose;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import de.greenrobot.event.EventBus;
 
 public abstract class AbstractMyoService extends Service {
 
     private static final String TAG = "MyoService";
+
+    /**
+     * For onPeriodic() callback
+     */
+    Handler mHandler = new Handler();
 
     private DeviceListener mListener = new AbstractDeviceListener() {
         @Override
@@ -44,13 +56,14 @@ public abstract class AbstractMyoService extends Service {
         @Override
         public void onPose(Myo myo, long timestamp, Pose pose) {
 
-            MyoState currentState = MyoState.getCurrent();
+            MyoState currentState = getMyoState();
+            //FIXME timestamp format???
+            EventBus.getDefault().postSticky(new MyoPoseEvent(pose, System.currentTimeMillis()));
+
             if (currentState.isLocked() && !Pose.THUMB_TO_PINKY.equals(pose)) {
                 return;
             }
-            EventBus.getDefault().postSticky(new MyoPoseEvent(pose));
-
-             switch (pose) {
+            switch (pose) {
                 case THUMB_TO_PINKY:
                     onThumbToPinky(myo, timestamp, pose);
                     break;
@@ -72,6 +85,92 @@ public abstract class AbstractMyoService extends Service {
             }
         }
     };
+    private PeriodicCallbackRunnable periodicTask;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+
+        // First, we initialize the Hub singleton with an application identifier.
+        Hub hub = Hub.getInstance();
+        if (!hub.init(this, getPackageName())) {
+            EventBus.getDefault().post(new MyoErrorEvent("Could not initialize myo hub!"));
+            stopSelf();
+
+            return;
+        }
+
+        // Next, register for DeviceListener callbacks.
+        hub.addListener(mListener);
+        //Start the onPeriodic executor
+        periodicTask = new PeriodicCallbackRunnable();
+        mHandler.postDelayed(periodicTask, 100);
+
+        // Finally, scan for Myo devices and connect to the first one found.
+        hub.pairWithAnyMyo();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+
+        mHandler.removeCallbacks(periodicTask);
+
+        // We don't want any callbacks when the Service is gone, so unregister the listener.
+        Hub.getInstance().removeListener(mListener);
+        Hub.getInstance().shutdown();
+
+
+    }
+
+    protected int getPoseHoldTime(Pose pose) {
+        //The default hold time is almost unlimited, so it will never happen
+        return Integer.MAX_VALUE;
+    }
+
+
+    protected MyoState getMyoState() {
+        return MyoState.getCurrent();
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    private class PeriodicCallbackRunnable implements Runnable {
+
+        @Override
+        public void run() {
+
+            MyoPoseEvent lastPose = MyoPoseEvent.get();
+            if (null != lastPose) {
+                checkHold(lastPose);
+            }
+            onPeriodic(getMyoState(), lastPose);
+
+            mHandler.postDelayed(this, 15);
+        }
+
+        private void checkHold(MyoPoseEvent lastPose) {
+
+            List<Myo> connectedDevices = Hub.getInstance().getConnectedDevices();
+            Myo myo = Iterables.getLast(connectedDevices);
+
+            long holdTime = System.currentTimeMillis() - lastPose.getTimestamp();
+            //If the hold event is not processed already and we reached the Pose dependant hold time
+            if (!lastPose.isHold() && getPoseHoldTime(lastPose.getPose()) < holdTime) {
+                //FIXME not works with multiple myo
+                onHold(myo, lastPose.getPose());
+                //The notification flag toggle
+                EventBus.getDefault().postSticky(lastPose.setHold(true));
+            }
+        }
+
+
+    }
 
     protected void onMyoConnect(Myo myo, long timestamp) {
 
@@ -97,41 +196,13 @@ public abstract class AbstractMyoService extends Service {
     }
 
     protected void onRest(Myo myo, long timestamp, Pose pose) {
+
     }
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+    protected void onHold(Myo myo, Pose pose) {
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+    protected void onPeriodic(MyoState myoState, MyoPoseEvent lastPose) {
 
-
-        // First, we initialize the Hub singleton with an application identifier.
-        Hub hub = Hub.getInstance();
-        if (!hub.init(this, getPackageName())) {
-            EventBus.getDefault().post(new MyoErrorEvent("Could not initialize myo hub!"));
-            stopSelf();
-            return;
-        }
-
-        // Next, register for DeviceListener callbacks.
-        hub.addListener(mListener);
-
-        // Finally, scan for Myo devices and connect to the first one found.
-        hub.pairWithAnyMyo();
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        // We don't want any callbacks when the Service is gone, so unregister the listener.
-        Hub.getInstance().removeListener(mListener);
-
-        Hub.getInstance().shutdown();
-    }
-
-
 }

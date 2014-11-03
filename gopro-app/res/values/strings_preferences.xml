@@ -14,8 +14,6 @@
     <string name="pref_desc_gopro_wifi_ssid">The SSID of the GoPro wifi network</string>
     <string name="pref_title_gopro_wifi_ssid">GoPro network SSID</string>
     <string name="pref_default_gopro_wifi_ssid">gopro</string>
-    <!-- MYO -->
-    <string name="pref_cat_myo">Myo settings</string>
-    <string name="pref_sum_myo">Manage Myo armband setting</string>
+
 
 </resources>

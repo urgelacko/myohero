@@ -41,3 +41,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/gopro-app/tempbar
+/gopro-app/tempclasses
+/gopro-app/target
+/gopro-app/libs
+/gopro-app/gen
+/gopro-app/build
+/gopro-app/bin

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.realsoft.gopro.R;
 import com.realsoft.gopro.event.MyoPoseEvent;
@@ -54,7 +55,7 @@ public class MyoPoseFragment extends Fragment {
                 poseImageResourceId = R.drawable.solid_blue_rh_spread_fingers;
                 break;
             case WAVE_IN:
-                poseImageResourceId = R.drawable.solid_blue_lh_wave_left;
+                poseImageResourceId = R.drawable.solid_blue_rh_wave_left;
                 break;
             case WAVE_OUT:
                 poseImageResourceId = R.drawable.solid_blue_rh_wave_right;
@@ -64,6 +65,11 @@ public class MyoPoseFragment extends Fragment {
                 poseImageResourceId = !myoState.isConnected() || myoState.isLocked() ? R.drawable.lock : R.drawable.lock_open;
         }
         image.setBackgroundResource(poseImageResourceId);
+
+
+        TextView comboState = (TextView) getView().findViewById(R.id.myoComboText);
+        comboState.setText(poseEvent.isHold() ? R.string.myo_combo_hold : R.string.empty);
+
     }
 
 

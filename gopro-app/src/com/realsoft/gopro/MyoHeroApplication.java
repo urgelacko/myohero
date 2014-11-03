@@ -19,19 +19,20 @@
 package com.realsoft.gopro;
 
 import android.app.Application;
+import android.provider.ContactsContract;
 
 public class MyoHeroApplication extends Application {
 
-	private static MyoHeroApplication context;
+    private static MyoHeroApplication context;
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		MyoHeroApplication.context = (MyoHeroApplication) getApplicationContext();
-	}
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        MyoHeroApplication.context = (MyoHeroApplication) getApplicationContext();
+    }
 
-	public static MyoHeroApplication getAppContext() {
-		return MyoHeroApplication.context;
-	}
+    public static MyoHeroApplication getAppContext() {
+        return MyoHeroApplication.context;
+    }
 
 }

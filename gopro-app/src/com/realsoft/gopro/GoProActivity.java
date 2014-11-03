@@ -60,7 +60,6 @@ public class GoProActivity extends Activity {
     private void refreshStatusUi() {
 
         final GoProStatus status = getStateFromBus();
-
         // Power toggle
         final ToggleButton powerToggle = (ToggleButton) findViewById(R.id.btnPower);
         powerToggle.setChecked(!GoProState.TURNED_OFF.equals(status.getState()));

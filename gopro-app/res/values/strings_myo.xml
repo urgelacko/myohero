@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MYO -->
+    <string name="myo_status_connected">Myo connected</string>
+    <string name="myo_status_disconnected">Myo disconnected</string>
+    <string name="myo_status_locked">Locked</string>
+    <string name="myo_status_unlocked">Unlocked</string>
+    <!--<string name="myo_pose">Pose: %s</string>-->
+    <!-- /////// -->
+    <!-- PREFERENCES -->
+    <string name="pref_cat_myo">Myo settings</string>
+    <string name="pref_sum_myo">Manage Myo armband setting</string>
+
+    <!--COMBO -->
+
+    <string name="myo_combo_hold">Hold</string>
+
+</resources>

@@ -9,19 +9,40 @@ import de.greenrobot.event.EventBus;
  */
 public class MyoPoseEvent {
 
-
     private Pose pose;
 
+    private long timestamp;
 
-    public MyoPoseEvent(Pose pose) {
+    private boolean hold = false;
+
+    public MyoPoseEvent(Pose pose, long timestamp) {
         this.pose = pose;
+        this.timestamp = timestamp;
+    }
+
+    public static MyoPoseEvent get() {
+        return EventBus.getDefault().getStickyEvent(MyoPoseEvent.class);
     }
 
     public Pose getPose() {
         return pose;
     }
 
-    public void setPose(Pose pose) {
+    public MyoPoseEvent setPose(Pose pose) {
         this.pose = pose;
+        return this;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public boolean isHold() {
+        return hold;
+    }
+
+    public MyoPoseEvent setHold(boolean hold) {
+        this.hold = hold;
+        return this;
     }
 }
