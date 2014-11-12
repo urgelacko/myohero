@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.realsoft.gopro.controller.GoProApiGoProController;
 import com.realsoft.gopro.controller.GoProCommand;
 import com.realsoft.gopro.controller.GoProController;
+import com.realsoft.gopro.controller.ToasterGoProController;
 import com.realsoft.gopro.event.GoProCommandEvent;
 import com.realsoft.gopro.event.GoProCommandResultEvent;
 import com.realsoft.gopro.event.GoProErrorEvent;
@@ -70,9 +71,8 @@ public class GoProControllerFragment extends Fragment {
         wifiSSID = settings.getString(SettingsActivity.KEY_GOPRO_SSID, "");
         goProPass = settings.getString(SettingsActivity.KEY_GOPRO_PW, "");
 
-        // goPro = new GoProApi(goProPass);
-        // goPro = new ToasterGoProController();
-        goPro = new GoProApiGoProController(goProPass);
+         goPro = new ToasterGoProController();
+//        goPro = new GoProApiGoProController(goProPass);
 
         refreshWifi();
 

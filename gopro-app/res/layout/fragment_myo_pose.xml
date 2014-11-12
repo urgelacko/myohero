@@ -5,17 +5,30 @@
     tools:context="com.realsoft.gopro.ui.fragment.MyoPoseFragment">
 
 
-    <ImageView
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/myoPoseImages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+
+    <TextView
+        android:id="@+id/myoHoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/myoPoseImage"
-        android:layout_gravity="center" />
+        android:layout_gravity="bottom|center"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/myoComboText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:textSize="14sp"/>
+        android:layout_gravity="bottom"
+        android:textSize="14sp" />
 
 </FrameLayout>

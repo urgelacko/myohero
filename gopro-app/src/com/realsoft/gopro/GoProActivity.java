@@ -12,16 +12,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.realsoft.gopro.controller.GoProCommand;
 import com.realsoft.gopro.event.GoProCommandEvent;
 import com.realsoft.gopro.event.GoProState;
 import com.realsoft.gopro.event.GoProStatus;
-import com.realsoft.gopro.event.MyoState;
+import com.realsoft.gopro.event.MyoStateEvent;
+import com.realsoft.gopro.myo.GoProControllerMyoService;
 import com.realsoft.gopro.ui.fragment.MyoPoseFragment;
-import com.thalmic.myo.Myo;
 import com.thalmic.myo.scanner.ScanActivity;
 
 import de.greenrobot.event.EventBus;
@@ -51,7 +50,7 @@ public class GoProActivity extends Activity {
 
     }
 
-    public void onEventMainThread(final MyoState myoState) {
+    public void onEventMainThread(final MyoStateEvent myoState) {
 
         refreshStatusUi();
 
@@ -72,7 +71,7 @@ public class GoProActivity extends Activity {
         final TextView findViewById = (TextView) findViewById(R.id.goProStatusText);
         findViewById.setText(status.getState().getMessageKey());
 
-        MyoState myoState = MyoState.getCurrent();
+        MyoStateEvent myoState = MyoStateEvent.getCurrent();
 
         /**
          * MYO STATE

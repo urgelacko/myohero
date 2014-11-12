@@ -40,7 +40,7 @@
             android:label="@string/title_activity_settings" >
         </activity>
 
-        <service android:name=".GoProControllerMyoService" />
+        <service android:name=".myo.GoProControllerMyoService" />
 
     </application>
 

@@ -48,3 +48,17 @@ Temporary Items
 /gopro-app/gen
 /gopro-app/build
 /gopro-app/bin
+/gopro-app/.idea/libraries
+/gopro-app/.idea/libraries
+taskArtifacts
+.idea
+dex-cache
+intermediates
+libs
+/core/*.iml
+wrapper
+/core/build/tmp/jar
+/local.properties
+*.iml
+myo
+/robolectric-tests/build/tmp/jar

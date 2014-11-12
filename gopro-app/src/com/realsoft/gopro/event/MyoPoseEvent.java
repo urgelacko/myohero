@@ -1,27 +1,25 @@
 package com.realsoft.gopro.event;
 
+import com.thalmic.myo.Arm;
 import com.thalmic.myo.Pose;
-
-import de.greenrobot.event.EventBus;
 
 /**
  * Created by szabol on 2014.11.01..
  */
 public class MyoPoseEvent {
 
+    private final long timestamp;
+
     private Pose pose;
 
-    private long timestamp;
+    private Arm arm;
 
     private boolean hold = false;
 
-    public MyoPoseEvent(Pose pose, long timestamp) {
+    public MyoPoseEvent(Pose pose, Arm arm, long timestamp) {
         this.pose = pose;
+        this.arm = arm;
         this.timestamp = timestamp;
-    }
-
-    public static MyoPoseEvent get() {
-        return EventBus.getDefault().getStickyEvent(MyoPoseEvent.class);
     }
 
     public Pose getPose() {
@@ -37,12 +35,19 @@ public class MyoPoseEvent {
         return timestamp;
     }
 
+    public MyoPoseEvent setHold(boolean isHold) {
+        this.hold = isHold;
+        return this;
+    }
+
     public boolean isHold() {
         return hold;
     }
 
-    public MyoPoseEvent setHold(boolean hold) {
-        this.hold = hold;
-        return this;
+    @Override
+    public String toString() {
+        return pose.name();
     }
+
+
 }
