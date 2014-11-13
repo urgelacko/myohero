@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+configurations {
+    provided
+}
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
+dependencies {
+
+    repositories {
+        mavenCentral()
+        maven {
+            url 'd:/dev/workspace_android/myo-android-sdk-0.6.0/myorepository'
+        }
+        maven {
+            url 'c:/Users/szabol/.m2/repository'
+        }
+    }
+    compile 'com.thalmic:myosdk-jar:0.6.+'
+    compile 'com.google.guava:guava:18.0'
+
+    testCompile 'junit:junit:4.+'
+}

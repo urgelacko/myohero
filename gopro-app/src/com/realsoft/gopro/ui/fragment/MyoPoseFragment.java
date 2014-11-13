@@ -21,6 +21,7 @@ import com.google.common.collect.Lists;
 import com.realsoft.gopro.R;
 import com.realsoft.gopro.event.MyoComboEvent;
 import com.realsoft.gopro.event.MyoPoseEvent;
+import com.realsoft.myo.states.combo.MyoComboItem;
 import com.thalmic.myo.Pose;
 
 import java.util.List;
@@ -70,9 +71,9 @@ public class MyoPoseFragment extends Fragment {
     public void onEventMainThread(MyoComboEvent comboEvent) {
         LinearLayout imageList = (LinearLayout) getView().findViewById(R.id.myoPoseImages);
         imageList.removeAllViews();
-        for (Pose pose : comboEvent.getCombo().getPoseCombo().getComboChain()) {
+        for (MyoComboItem comboItem : comboEvent.getCombo().getComboChain()) {
             ImageView imageView = new ImageView(this.getActivity());
-            updatePoseImageResource(pose, imageView);
+            updatePoseImageResource(comboItem.getPose(), imageView);
             imageList.addView(imageView);
         }
     }
