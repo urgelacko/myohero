@@ -62,3 +62,9 @@ wrapper
 *.iml
 myo
 /robolectric-tests/build/tmp/jar
+/.project
+/.settings
+/gopro-app/*.classpath
+*.project
+.settings
+/gopro-app/local.properties
