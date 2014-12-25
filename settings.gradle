@@ -1,1 +1,1 @@
-include ':gopro-app', ':core', ':robolectric-tests'
+include ':gopro-app', ':core', ':robolectric-tests',":..:VitamioBundle:vitamio"

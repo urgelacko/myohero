@@ -1,34 +1,23 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.realsoft.gopro.ui.fragment.MyoPoseFragment">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.urgesoft.gopro.myo.MyoPoseFragment">
 
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:id="@+id/myoPoseImages"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
-
-
-    <TextView
-        android:id="@+id/myoHoldText"
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/myoPoseImages"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:textSize="14sp" />
+        android:layout_height="74dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+    </LinearLayout>
 
     <TextView
         android:id="@+id/myoComboText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
 </FrameLayout>

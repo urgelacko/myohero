@@ -1,21 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="gopro_command_connect">Connecting to GoPro wifi network</string>
-    <string name="gopro_command_disconnect">Disconnecting to GoPro wifi network</string>
+
+    <string name="label_btn_connect">Connect GoPro wifi</string>
+    <string name="label_btn_turned_on">Turn on</string>
+    <string name="label_btn_turned_off">Turn off</string>
+
+    <string name="gopro_warning_setup_wifi">Please setup GoPro wifi network in Settings</string>
+    <string name="gopro_command_connect">Connect to GoPro wifi network</string>
+    <string name="gopro_command_disconnect">Disconnect from GoPro wifi network</string>
     <string name="gopro_command_turn_on">Turn on GoPro</string>
     <string name="gopro_command_turn_off">Turn off GoPro</string>
-    <string name="gopro_command_start_record">Start recording a video</string>
-    <string name="gopro_command_stop_record">Stop video recording</string>
-    <string name="gopro_command_take_picture">Take a picture</string>
+    <string name="gopro_command_start_record">Start recording / Take a picture</string>
+    <string name="gopro_command_stop_record">Stop recording</string>
     <string name="gopro_command_start_preview">Start video preview</string>
     <string name="gopro_command_stop_preview">Stop video preview</string>
     <string name="gopro_command_camera_mode">Change camera mode</string>
+    <string name="gopro_command_toggle_record">Toggle recording</string>
+    <string name="gopro_command_toggle_lock">Toggle lock</string>
+    <string name="gopro_command_lock">Lock</string>
+    <string name="gopro_command_unlock">Unlock</string>
+    <string name="gopro_command_next_mode">Next camera mode</string>
+    <string name="gopro_command_prev_mode">Previous camera mode</string>
+
+    <!-- PREVIEW -->
+    <string name="gopro_preview_disabled">Preview is turned off</string>
+    <string name="gopro_preview_loading">Loading preview...</string>
 
     <!-- STATUS -->
     <string name="gopro_status_power_on">Turned on</string>
     <string name="gopro_status_power_off">Turned off</string>
     <string name="gopro_status_recording">Recording...</string>
     <string name="gopro_status_ready">Ready</string>
+    <string name="gopro_status_connected">Connected</string>
+    <string name="gopro_status_disconnected">Disconnected</string>
+    <string name="gopro_status_connecting">Connecting</string>
+    <string name="gopro_tap_to_connect">Tap to connect GoPro Wifi</string>
+
+    <string name="gopro_camera_mode_video">Video</string>
+    <string name="gopro_camera_mode_photo">Photo</string>
+    <string name="gopro_camera_mode_burst">Burst</string>
+    <string name="gopro_camera_mode_timelapse">Time lapse</string>
+    <string name="gopro_camera_mode_timer">Self timer</string>
 
 </resources>

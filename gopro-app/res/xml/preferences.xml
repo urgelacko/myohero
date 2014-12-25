@@ -1,5 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceCategory xmlns:android="http://schemas.android.com/apk/res/android" >
-    
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-</PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_cat_gopro">
+
+        <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+        <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+        <EditTextPreference
+            android:capitalize="words"
+            android:inputType="text"
+            android:key="gopro_pw"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_gopro_pw"/>
+        <EditTextPreference
+            android:capitalize="words"
+            android:inputType="text"
+            android:key="gopro_ssid"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_gopro_wifi_ssid"/>
+        <!--<EditTextPreference-->
+        <!--android:capitalize="words"-->
+        <!--android:defaultValue="@string/pref_default_gopro_url"-->
+        <!--android:inputType="text"-->
+        <!--android:key="gopro_url"-->
+        <!--android:maxLines="1"-->
+        <!--android:selectAllOnFocus="true"-->
+        <!--android:singleLine="true"-->
+        <!--android:visibility="invisible"-->
+        <!--android:title="@string/pref_title_gopro_url"/>-->
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Myo Settings">
+
+
+        <!--<EditTextPreference-->
+        <!--android:defaultValue="1200"-->
+        <!--android:dialogTitle="@string/pref_myo_command_assignments"-->
+        <!--android:inputType="number"-->
+        <!--android:key="pref_myo_hold_time"-->
+        <!--android:id="@+id/pref_myo_hold_time"-->
+        <!--android:summary="@string/pref_desc_myo_hold_time"-->
+        <!--android:title="@string/pref_myo_hold_time"-->
+        <!--/>-->
+
+
+        <CheckBoxPreference
+            android:id="@+id/combSupportCheckBox"
+            android:defaultValue="true"
+            android:title="@string/pref_myo_combo_enabled"
+            android:summary="@string/pref_desc_myo_combo_enabled"
+            android:key="pref_myo_combo_enabled"/>
+
+        <ListPreference
+            android:defaultValue="550"
+            android:dialogTitle="@string/pref_myo_combo_expire_time"
+            android:dependency="pref_myo_combo_enabled"
+            android:id="@+id/pref_myo_combo_expire_time"
+            android:key="pref_myo_combo_expire_time"
+            android:entries="@array/myo_combo_expire_duration"
+            android:entryValues="@array/myo_combo_expire_durationValues"
+            android:summary="%s"
+            android:title="@string/pref_myo_combo_expire_time"/>
+
+        <Preference
+            android:title="@string/pref_myo_command_assignments"
+            android:summary="@string/pref_desc_myo_command_assignments">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.urgesoft.gopro.MyoAssignmentSettingsActivity"
+                android:targetPackage="com.urgesoft.gopro"/>
+        </Preference>
+
+        <Preference
+            android:summary="@string/pref_desc_myo_scan"
+            android:title="@string/pref_myo_scan">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.thalmic.myo.scanner.ScanActivity"
+                android:targetPackage="com.urgesoft.gopro"/>
+        </Preference>
+
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:id="@+id/combSupportCheckBox"
+            android:title="@string/pref_myo_autolock"
+            android:summary="@string/pref_desc_myo_autolock"
+            android:key="pref_myo_autolock_enabled"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

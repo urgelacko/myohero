@@ -4,13 +4,12 @@ buildscript {
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:1.0.0'
         classpath 'com.novoda.gradle:robolectric-plugin:0.0.1-SNAPSHOT'
 
     }
 }
 apply plugin: 'android'
-//apply plugin: 'robolectric'
 
 sourceSets {
     testLocal {
@@ -19,11 +18,16 @@ sourceSets {
     }
 }
 
-
 android {
+    
     compileSdkVersion 18
     buildToolsVersion "21.0.2"
-
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 18
+        versionCode 3
+        versionName "1.0.2"
+    }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -36,15 +40,18 @@ android {
         }
 
         instrumentTest.setRoot('src/test')
-
-        // Move the build types to build-types/<type>
-        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
-        // This moves them out of them default location under src/<type>/... which would
-        // conflict with src/ being used by the main source set.
-        // Adding new build types or product flavors should be accompanied
-        // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+        }
     }
 }
 
@@ -53,23 +60,21 @@ configurations {
 }
 
 dependencies {
-
     repositories {
         mavenCentral()
         maven {
-            url 'd:/dev/workspace_android/myo-android-sdk-0.6.0/myorepository'
+            url 'd:/dev/workspace_android/myo-android-sdk-0.10.0/myorepository'
         }
         maven {
             url 'c:/Users/szabol/.m2/repository'
         }
     }
-
-
-    compile 'de.greenrobot:eventbus:2.2.1'
-    compile group: 'GoProJavaApi', name: 'GoProJavaApi', version: '0.0.1-SNAPSHOT'
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.thalmic:myosdk:0.6.+@aar'
+    compile 'GoProJavaApi:GoProJavaApi:0.0.1-SNAPSHOT'
     compile project(':core')
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile 'de.greenrobot:eventbus:2.2.1'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.thalmic:myosdk:0.10.+@aar'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile project(':..:VitamioBundle:vitamio')
 }

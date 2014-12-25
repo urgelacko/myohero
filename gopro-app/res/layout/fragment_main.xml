@@ -1,63 +1,168 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.realsoft.gopro.GoProActivity$PlaceholderFragment">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="MainFragment.PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/goProStatusText"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:id="@+id/statusPanelContainer"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/goProStatusPanel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_height="72dp"
+                android:src="@drawable/gopro_logo"
+                android:id="@+id/goProLogo"
+                android:background="@null"
+                />
+
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+
+            <ToggleButton
+                android:id="@+id/btnPower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/power_toggle"
+                android:background="@null"
+                android:textOff="@string/empty"
+                android:textOn="@string/empty"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_alignParentBottom="false"
+                android:layout_alignBottom="@+id/goProLogo"
+                android:gravity="bottom|left"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap to connect"
+                android:id="@+id/goProDisconnectedLabel"
+                android:layout_alignParentRight="false"
+                android:layout_alignTop="@+id/goProLogo"
+                android:layout_alignBottom="@+id/goProLogo"
+                android:layout_alignParentLeft="false"
+                android:layout_alignRight="@+id/goProLogo"
+                android:layout_alignLeft="@+id/goProLogo"
+                android:gravity="center"
+                android:textColor="@color/myosdk__button_red"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+
+            <!--android:textAlignment="gravity"-->
+
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/goproProgressBar"
+                android:layout_centerInParent="true"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_height="72dp"
+                android:src="@drawable/myo_icon_blue_dot"
+                android:id="@+id/myoLogo"
+
+                android:background="@null"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"/>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myoLockedIcon"
+                android:layout_alignParentLeft="false"
+                android:src="@drawable/ic_action_lock_closed"
+                android:layout_alignParentBottom="false"
+                android:layout_alignBottom="@+id/myoLogo"
+                android:adjustViewBounds="false"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/camera_status" />
+        android:name="com.urgesoft.gopro.ui.fragment.PreviewFragment"
+        android:id="@+id/previewFragment"
+        android:layout_below="@+id/statusPanelContainer"
+        tools:layout="@layout/fragment_preview"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        />
 
-
-    <ToggleButton
-        android:id="@+id/btnPower"
-        android:layout_width="wrap_content"
+    <fragment
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/goProStatusText"
-        android:textOff="Turn on"
-        android:textOn="Turn off" />
+        android:name="com.urgesoft.gopro.myo.MyoPoseFragment"
+        android:id="@+id/myoPoseFragment"
+        android:layout_below="@+id/statusPanelContainer"
+        tools:layout="@layout/fragment_myo_pose"/>
 
     <ToggleButton
         android:id="@+id/btnRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnPower"
-        android:textOff="Start recording"
-        android:textOn="Stop recording" />
+        android:textOff="@string/empty"
+        android:textOn="@string/empty"
+        android:background="@null"
+        android:button="@drawable/record_toggle"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:checked="false"
+        android:gravity="center_horizontal"/>
 
-    <TextView
-        android:id="@+id/myoStatusText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/myo_status_disconnected"
-        android:layout_below="@+id/btnRecord" />
+    <ToggleButton
+        android:id="@+id/btnGoProPreview"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/preview_toggle"
+        android:textOff="@string/empty"
+        android:textOn="@string/empty"
+        android:layout_gravity="center"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentLeft="true"
+        android:checked="false"/>
 
-    <TextView
-        android:id="@+id/myoLockedState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/myoStatusText" />
-
-    <Button
-        android:id="@+id/btnScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/myoLockedState"
-        android:onClick="selfDestruct"
-        android:text="@string/pref_cat_myo" />
-
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="com.realsoft.gopro.ui.fragment.MyoPoseFragment"
-        android:id="@+id/myoPoseFragment"
-        android:layout_below="@+id/btnScan"
-        android:layout_centerHorizontal="true" />
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="New Button"
+        android:id="@+id/cameraModeBtn"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        />
 
 </RelativeLayout>

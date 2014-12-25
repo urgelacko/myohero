@@ -2,18 +2,82 @@
 <resources>
 
     <!-- MYO -->
-    <string name="myo_status_connected">Myo connected</string>
-    <string name="myo_status_disconnected">Myo disconnected</string>
     <string name="myo_status_locked">Locked</string>
     <string name="myo_status_unlocked">Unlocked</string>
-    <!--<string name="myo_pose">Pose: %s</string>-->
-    <!-- /////// -->
+    <!-- POSES -->
+
+    <string name="myo_pose_none">None</string>
+    <string name="myo_pose_rest">Rest</string>
+    <string name="myo_pose_fist">Fist</string>
+    <string name="myo_pose_wave_in">Wave in</string>
+    <string name="myo_pose_wave_out">Wave out</string>
+    <string name="myo_pose_fingers_spread">Finger spread</string>
+    <string name="myo_pose_thumb_to_pinky">Thumb to pinky</string>
+    <string name="myo_pose_double_tap">Double tap</string>
+
+    <string name="myo_pose_rest_hold">Hold Rest</string>
+    <string name="myo_pose_fist_hold">Hold Fist</string>
+    <string name="myo_pose_wave_in_hold">Hold Wave in</string>
+    <string name="myo_pose_wave_out_hold">Hold Wave out</string>
+    <string name="myo_pose_fingers_spread_hold">Hold Finger spread</string>
+
+    <string name="myo_pose_wave_in_wave_out">Wave in - Wave out</string>
+    <string name="myo_pose_wave_out_wave_in">Wave out - Wave in</string>
+
+    <string name="myo_pose_fist_fingers_spread_fist">Fist - Finger spread - Fist</string>
+    <string name="myo_pose_fingers_spread_fist_fingers_spread">Finger spread - Fist - Finger spread</string>
+    <string name="myo_pose_wave_in_fingers_spread_wave_out">Wave in - Finger spread - Wave out</string>
+    <string name="myo_pose_wave_in_fist_wave_out">Wave in - Fist - Wave out</string>
+    <string name="myo_pose_double_fist">2 x Fist</string>
+    <string name="myo_pose_double_fingers_spread">2 x Finger spread</string>
+    <string name="myo_pose_double_wave_in">2 x Wave in</string>
+    <string name="myo_pose_double_wave_out">2 x Wave out</string>
+    <string name="myo_pose_triple_wave_in">3 x Wave in</string>
+    <string name="myo_pose_triple_wave_out">3 x Wave out</string>
+    <string name="myo_pose_fingers_spread_hold_fist_hold">Hold Finger spread - Hold Fist</string>
+
+    <string name="myo_pose_double_tap_fingers_spread_hold">Double tap - Hold Finger spread</string>
+    <string name="myo_pose_double_tap_fist_hold">Double tap - Hold Fist</string>
+    <string name="myo_pose_double_tap_wave_in_hold">Double tap - Hold Wave in</string>
+    <string name="myo_pose_double_tap_wave_out_hold">Double tap - Hold Wave out</string>
+    <string name="myo_pose_double_tap_wave_in_wave_out_hold">Double tap - Wave in - Hold Wave out</string>
+    <string name="myo_pose_double_tap_wave_out_wave_in_hold">Double tap - Wave out - Hold Wave in</string>
+
     <!-- PREFERENCES -->
-    <string name="pref_cat_myo">Myo settings</string>
-    <string name="pref_sum_myo">Manage Myo armband setting</string>
+    <string name="pref_myo_scan">Manage Myo\'s</string>
+    <string name="pref_desc_myo_scan">Scan and connect to visible Myo armbands</string>
+
+    <string name="pref_myo_autolock">Auto lock</string>
+    <string name="pref_desc_myo_autolock">Enables lock on Myo automatically after a short idle time</string>
+
+    <string name="pref_myo_hold_time">Pose hold time</string>
+
+    <string name="pref_myo_combo_enabled">Combo support</string>
+    <string name="pref_desc_myo_combo_enabled">Enable pose combo support. Slightly increases Myo response time</string>
+
+    <string name="pref_desc_myo_hold_time">The time in millisecond after a pose treated hold</string>
+
+    <string name="pref_myo_combo_expire_time">Combo expire time</string>
+    <string name="pref_desc_myo_combo_expire_time">The time in millisecond which after a possible combo chain expires</string>
+
+    <string name="pref_desc_myo_command_assignments">Assign GoPro commands to Myo gestures</string>
+    <string name="pref_myo_command_assignments">Pose assignments</string>
+
 
     <!--COMBO -->
-
     <string name="myo_combo_hold">Hold</string>
+
+    <string-array name="myo_combo_expire_duration">
+        <item>Short</item>
+        <item>Medium</item>
+        <item>Long</item>
+        <item>Very long</item>
+    </string-array>
+    <string-array name="myo_combo_expire_durationValues">
+        <item>300</item>
+        <item>550</item>
+        <item>800</item>
+        <item>1000</item>
+    </string-array>
 
 </resources>

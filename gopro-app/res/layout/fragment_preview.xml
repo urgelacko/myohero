@@ -1,0 +1,51 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             tools:context="com.urgesoft.gopro.ui.fragment.PreviewFragment">
+
+    <io.vov.vitamio.widget.CenterLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="1dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/previewContainer"
+            android:background="@drawable/rounded_border"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+
+            <SurfaceView
+                android:id="@+id/previewVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                >
+            </SurfaceView>
+        </RelativeLayout>
+    </io.vov.vitamio.widget.CenterLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/gopro_preview_disabled"
+        android:id="@+id/previewToggleLabel"
+        android:layout_gravity="center"
+        android:textColor="@color/myosdk__button_red"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <ProgressBar
+        android:id="@+id/previewProgress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"/>
+
+</FrameLayout>

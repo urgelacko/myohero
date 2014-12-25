@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+
+      tools:context="com.urgesoft.gopro.GoProActivity">
+
+    <item
+        android:id="@+id/menu_gopro_cameramode_video"
+        android:orderInCategory="100"
+        android:title="@string/gopro_camera_mode_video"
+        android:icon="@android:drawable/ic_dialog_email"
+        />
+
+    <item
+        android:id="@+id/menu_gopro_cameramode_photo"
+        android:orderInCategory="100"
+        android:title="@string/gopro_camera_mode_photo"
+        android:icon="@android:drawable/ic_dialog_email"
+        />
+
+    <item
+        android:id="@+id/menu_gopro_cameramode_burst"
+        android:orderInCategory="100"
+        android:title="@string/gopro_camera_mode_burst"
+        android:icon="@android:drawable/ic_dialog_email"
+        />
+
+    <item
+        android:id="@+id/menu_gopro_cameramode_timelapse"
+        android:orderInCategory="100"
+        android:title="@string/gopro_camera_mode_timelapse"
+        android:icon="@android:drawable/ic_dialog_email"
+        />
+
+
+</menu>
