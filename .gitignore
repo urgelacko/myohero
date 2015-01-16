@@ -60,7 +60,6 @@ wrapper
 /core/build/tmp/jar
 /local.properties
 *.iml
-myo
 /robolectric-tests/build/tmp/jar
 /.project
 /.settings
@@ -68,3 +67,5 @@ myo
 *.project
 .settings
 /gopro-app/local.properties
+/robolectric-tests/build/classes/test/com/realsoft/myo/*.class
+*.class

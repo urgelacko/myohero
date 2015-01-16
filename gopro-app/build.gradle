@@ -19,7 +19,14 @@ sourceSets {
 }
 
 android {
-    
+    signingConfigs {
+        config {
+            keyAlias 'realsoft-android-key'
+            keyPassword 'h4gymaskey'
+            storeFile file('D:/dev/workspace_android/keystore.jks')
+            storePassword 'h4gymaskeystore'
+        }
+    }
     compileSdkVersion 18
     buildToolsVersion "21.0.2"
     defaultConfig {
