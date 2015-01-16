@@ -58,7 +58,6 @@ libs
 /core/*.iml
 wrapper
 /core/build/tmp/jar
-/local.properties
 *.iml
 /robolectric-tests/build/tmp/jar
 /.project
