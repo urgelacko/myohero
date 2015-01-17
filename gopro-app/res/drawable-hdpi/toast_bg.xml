@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <stroke
+                android:width="2dp"
+                android:color="#0099CC"></stroke>
+            <padding
+                android:left="2dp"
+                android:top="2dp"
+                android:right="2dp"
+                android:bottom="2dp"></padding>
+
+            <corners android:radius="5dp"></corners>
+        </shape>
+    </item>
+    <item android:drawable="@color/myosdk__thalmic_blue" />
+</layer-list>

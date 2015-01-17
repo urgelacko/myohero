@@ -2,6 +2,7 @@ package com.urgesoft.gopro.controller;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.urgesoft.gopro.event.GoProCommandEvent;
@@ -10,6 +11,7 @@ import com.urgesoft.gopro.event.GoProConnectionChangeEvent;
 import com.urgesoft.gopro.event.GoProErrorEvent;
 import com.urgesoft.gopro.event.GoProState;
 import com.urgesoft.gopro.event.GoProStatus;
+import com.urgesoft.gopro.event.ToastEvent;
 
 import java.io.IOException;
 
@@ -27,7 +29,6 @@ public abstract class EventBusGoProController implements GoProController {
 
             Log.d(TAG, String.format("GoPro command executed! command:[%s]", command));
             getEventBus().post(new GoProCommandResultEvent(command.getCommand(), command.getSetting()));
-
         } catch (IOException ioE) {
             propagateException(command, ioE);
             getEventBus().post(new GoProConnectionChangeEvent(GoProState.DISCONNECTED));

@@ -2,7 +2,6 @@ package com.urgesoft.gopro.myo;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
@@ -68,7 +67,7 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
         //Autolock
-        updateAutolockFlag(settings);
+        updateAutoLockFlag(settings);
         //Listener
         settings.registerOnSharedPreferenceChangeListener(this);
         //Hold time
@@ -138,11 +137,11 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
         } else if (key.equals(SettingsFragment.KEY_MYO_COMBO_ENABLED)) {
             updateComboExpireFromPreferences(sharedPreferences);
         } else if (key.equals(SettingsFragment.KEY_MYO_AUTOLOCK_ENABLED)) {
-            updateAutolockFlag(sharedPreferences);
+            updateAutoLockFlag(sharedPreferences);
         }
     }
 
-    private void updateAutolockFlag(SharedPreferences sharedPreferences) {
+    private void updateAutoLockFlag(SharedPreferences sharedPreferences) {
         autolock = sharedPreferences.getBoolean(SettingsFragment.KEY_MYO_AUTOLOCK_ENABLED, false);
     }
 

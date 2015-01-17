@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.thalmic.myo.scanner.ScanActivity;
 import com.urgesoft.gopro.R;
 import com.urgesoft.gopro.controller.BackPackStatus;
 import com.urgesoft.gopro.controller.GoProCommand;
@@ -31,7 +33,6 @@ import com.urgesoft.gopro.event.MyoStateEvent;
 import com.urgesoft.gopro.event.ToastEvent;
 import com.urgesoft.gopro.myo.GoProControllerMyoService;
 import com.urgesoft.gopro.myo.MyoPoseFragment;
-import com.thalmic.myo.scanner.ScanActivity;
 
 import de.greenrobot.event.EventBus;
 import io.vov.vitamio.utils.Log;
@@ -119,8 +120,18 @@ public class MainFragment extends Fragment implements PreviewFragment.PreviewSta
     }
 
     public void onEventMainThread(final ToastEvent message) {
-        Toast.makeText(this.getActivity(), message.getMessage(), Toast.LENGTH_LONG).show();
-    }
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) getActivity().findViewById(R.id.toast_layout_root));
+
+        TextView text = (TextView) layout.findViewById(R.id.toast_message);
+        text.setText(message.getMessage());
+
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM, 0, 60);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+     }
 
     private void refreshGoProStatusUi(GoProStatus status) {
 

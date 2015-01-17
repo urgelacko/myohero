@@ -14,6 +14,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableSet;
 import com.urgesoft.gopro.MyoHeroApplication;
 import com.urgesoft.gopro.controller.GoProApiGoProController;
 import com.urgesoft.gopro.controller.GoProCommand;
@@ -31,12 +32,15 @@ import com.urgesoft.gopro.event.ToastEvent;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import de.greenrobot.event.EventBus;
 
 public class GoProControllerFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = GoProControllerFragment.class.getSimpleName();
+
+    private static final Set<GoProCommand> NO_FEEDBACK_COMMANDS = ImmutableSet.of(GoProCommand.LOCK, GoProCommand.TOGGLE_LOCK, GoProCommand.UNLOCK);
 
     private WifiManager wifiManager;
 
@@ -114,6 +118,13 @@ public class GoProControllerFragment extends Fragment implements SharedPreferenc
      */
     public void onEventBackgroundThread(final GoProCommandEvent event) {
         Log.i(TAG, "GoProEvent: " + event.getCommand());
+
+
+        if (!NO_FEEDBACK_COMMANDS.contains(event.getCommand())) {
+            String string = getString(event.getCommand().getMessageKey());
+            EventBus.getDefault().post(new ToastEvent(string));
+        }
+
         goPro.executeCommand(event);
     }
 
@@ -128,7 +139,7 @@ public class GoProControllerFragment extends Fragment implements SharedPreferenc
 
     public void onEventBackgroundThread(final GoProConnectionChangeEvent event) {
         refreshGoProPowerStatusOnBus(event.getNewState());
-        WifiManager.WifiLock wifiLock = wifiManager.createWifiLock(MyoHeroApplication.class.getSimpleName() );
+        WifiManager.WifiLock wifiLock = wifiManager.createWifiLock(MyoHeroApplication.class.getSimpleName());
         switch (event.getNewState()) {
             case CONNECTED:
                 enableKeepWifiOn(wifiLock);
@@ -172,6 +183,9 @@ public class GoProControllerFragment extends Fragment implements SharedPreferenc
         }
 
         boolean isAlreadyConnected = isConnectedToGoProWifi(quoteWifi(ssid));
+        if (isAlreadyConnected) {
+            EventBus.getDefault().post(new GoProConnectionChangeEvent(GoProState.CONNECTED));
+        }
         return isAlreadyConnected;
     }
 
@@ -184,7 +198,6 @@ public class GoProControllerFragment extends Fragment implements SharedPreferenc
 
         String password = readConfiguredPassword();
         if (checkNoConnectionNeed(wifiConfigSSID, password)) {
-            EventBus.getDefault().post(new GoProConnectionChangeEvent(GoProState.CONNECTED));
             return;
         }
 
