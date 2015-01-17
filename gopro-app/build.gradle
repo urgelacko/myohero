@@ -19,14 +19,7 @@ sourceSets {
 }
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'realsoft-android-key'
-            keyPassword 'h4gymaskey'
-            storeFile file('c:\\_DATA\\dev\\workspace_android\\keystore.jks')
-            storePassword 'h4gymaskeystore'
-        }
-    }
+ 
     compileSdkVersion 18
     buildToolsVersion "21.0.2"
     defaultConfig {
@@ -73,7 +66,7 @@ dependencies {
             url 'c:/_DATA/dev/workspace_android/myo-android-sdk-0.10.0/myorepository'
         }
         maven {
-            url 'c:/Users/szabol/.m2/repository'
+            url 'c:/Users/urge/.m2/repository'
         }
     }
     compile 'GoProJavaApi:GoProJavaApi:0.0.1-SNAPSHOT'

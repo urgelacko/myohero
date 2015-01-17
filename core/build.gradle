@@ -12,13 +12,9 @@ dependencies {
     repositories {
         mavenCentral()
         maven {
-            url 'd:/dev/workspace_android/myo-android-sdk-0.10.0/myorepository'
-        }
-        maven {
             url 'c:/Users/szabol/.m2/repository'
         }
     }
     compile 'com.google.guava:guava:18.0'
-
     testCompile 'junit:junit:4.+'
 }

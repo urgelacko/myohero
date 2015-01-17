@@ -14,15 +14,16 @@ import com.urgesoft.gopro.event.GoProState;
 import com.urgesoft.gopro.ui.fragment.SettingsFragment;
 
 import de.greenrobot.event.EventBus;
+import io.vov.vitamio.utils.Log;
 
 /**
  * Created by szabol on 2014.11.22..
  */
 public class WifiNetworkMonitor extends BroadcastReceiver {
 
+    private static final String T = WifiNetworkMonitor.class.getSimpleName();
 
     @Override
-
     public void onReceive(Context context, Intent intent) {
 
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -43,12 +44,15 @@ public class WifiNetworkMonitor extends BroadcastReceiver {
         switch (supplicantState) {
             case COMPLETED:
                 handleSupplicantConnected(context, wifiManager);
+                Log.d(T, "Wifi supplicant Completed intent received!");
                 break;
             case ASSOCIATING:
             case SCANNING:
+                Log.d(T, "Wifi supplicant associating / scanning intent received!!");
                 handleSupplicantScanning(context, wifiManager);
                 break;
             case DISCONNECTED: {
+                Log.d(T, "Wifi supplicant disconnected intent received!!");
                 EventBus.getDefault().post(new GoProConnectionChangeEvent(GoProState.DISCONNECTED));
                 break;
             }
@@ -88,6 +92,8 @@ public class WifiNetworkMonitor extends BroadcastReceiver {
         if (WifiManager.WIFI_STATE_DISABLED == wifiState) {
             EventBus.getDefault().post(new GoProConnectionChangeEvent(GoProState.DISCONNECTED));
         }
+
+        Log.d(T, "Wifi supplicant connection state change intent received! WIFI_STATE_DISABLING:[%d]", wifiState);
     }
 
 

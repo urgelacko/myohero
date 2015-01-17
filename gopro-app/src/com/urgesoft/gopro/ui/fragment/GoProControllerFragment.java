@@ -128,8 +128,26 @@ public class GoProControllerFragment extends Fragment implements SharedPreferenc
 
     public void onEventBackgroundThread(final GoProConnectionChangeEvent event) {
         refreshGoProPowerStatusOnBus(event.getNewState());
-
+        WifiManager.WifiLock wifiLock = wifiManager.createWifiLock(MyoHeroApplication.class.getSimpleName() );
+        switch (event.getNewState()) {
+            case CONNECTED:
+                enableKeepWifiOn(wifiLock);
+                break;
+            case DISCONNECTED:
+                disableKeepWifiOn(wifiLock);
+        }
     }
+
+    private void disableKeepWifiOn(WifiManager.WifiLock wifiLock) {
+        wifiLock.setReferenceCounted(false);
+        wifiLock.release();
+    }
+
+    private void enableKeepWifiOn(WifiManager.WifiLock wifiLock) {
+        wifiLock.setReferenceCounted(false);
+        wifiLock.acquire();
+    }
+
 
     private void refreshGoProPowerStatusOnBus(GoProState newState) {
         GoProStatus newStatus = refreshBackPackStatus(newState);

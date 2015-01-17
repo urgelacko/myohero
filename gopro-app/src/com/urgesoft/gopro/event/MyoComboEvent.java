@@ -1,7 +1,8 @@
 package com.urgesoft.gopro.event;
 
-import com.urgesoft.myo.states.combo.MyoCombo;
 import com.thalmic.myo.Arm;
+import com.urgesoft.myo.states.combo.MyoCombo;
+
 
 /**
  * Created by szabol on 2014.11.03..

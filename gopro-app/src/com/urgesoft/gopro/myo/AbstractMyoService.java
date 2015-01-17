@@ -2,22 +2,13 @@ package com.urgesoft.gopro.myo;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.urgesoft.gopro.R;
-import com.urgesoft.gopro.event.MyoComboEvent;
-import com.urgesoft.gopro.event.MyoErrorEvent;
-import com.urgesoft.gopro.event.MyoPoseEvent;
-import com.urgesoft.gopro.event.MyoStateEvent;
-import com.urgesoft.gopro.ui.fragment.SettingsFragment;
-import com.urgesoft.myo.states.combo.MyoCombo;
-import com.urgesoft.myo.states.MyoPoseState;
-import com.urgesoft.gopro.event.StateTransitionEvent;
-import com.urgesoft.myo.states.MyoPoseStateMachine;
 import com.thalmic.myo.AbstractDeviceListener;
 import com.thalmic.myo.Arm;
 import com.thalmic.myo.DeviceListener;
@@ -25,6 +16,16 @@ import com.thalmic.myo.Hub;
 import com.thalmic.myo.Myo;
 import com.thalmic.myo.Pose;
 import com.thalmic.myo.XDirection;
+import com.urgesoft.gopro.R;
+import com.urgesoft.gopro.event.MyoComboEvent;
+import com.urgesoft.gopro.event.MyoErrorEvent;
+import com.urgesoft.gopro.event.MyoPoseEvent;
+import com.urgesoft.gopro.event.MyoStateEvent;
+import com.urgesoft.gopro.event.StateTransitionEvent;
+import com.urgesoft.gopro.ui.fragment.SettingsFragment;
+import com.urgesoft.myo.states.MyoPoseState;
+import com.urgesoft.myo.states.MyoPoseStateMachine;
+import com.urgesoft.myo.states.combo.MyoCombo;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -45,6 +46,10 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         EventBus.getDefault().postSticky(new MyoStateEvent(false));
+
+//BluetoothAdapter ad;
+//        ad.
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -116,6 +121,8 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
         // We don't want any callbacks when the Service is gone, so unregister the listener.
         Hub.getInstance().removeListener(mListener);
         Hub.getInstance().shutdown();
+        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+        btAdapter.cancelDiscovery();
 
         super.onDestroy();
     }
@@ -184,6 +191,8 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
         @Override
         public void onArmSync(Myo myo, long timestamp, Arm arm, XDirection xDirection) {
 
+            Log.d(TAG, String.format("Myo arm synced: arm:[%s]", arm.name()));
+
             super.onArmSync(myo, timestamp, arm, xDirection);
 
             if (!Arm.UNKNOWN.equals(arm)) {
@@ -197,6 +206,8 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
         @Override
         public void onArmUnsync(Myo myo, long timestamp) {
 
+            Log.d(TAG, String.format("Myo arm unSynced: arm:[%s]", armByMyoMac.get(myo.getMacAddress())));
+
             onMyoNotReady(myo, timestamp);
 
             super.onArmUnsync(myo, timestamp);
@@ -205,12 +216,17 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
         @Override
         public void onDisconnect(Myo myo, long timestamp) {
 
+            Log.d(TAG, String.format("Myo disconnected! arm:[%s]", armByMyoMac.get(myo.getMacAddress())));
+
             onMyoNotReady(myo, timestamp);
 
             super.onDisconnect(myo, timestamp);
         }
 
         private void onMyoNotReady(Myo myo, long timestamp) {
+
+            Log.d(TAG, String.format("Myo not ready! arm:[%s]", armByMyoMac.get(myo.getMacAddress())));
+
             armByMyoMac.remove(myo.getMacAddress());
             if (armByMyoMac.isEmpty()) {
                 onMyoDisconnect(myo, timestamp);
@@ -230,6 +246,7 @@ public abstract class AbstractMyoService extends Service implements SharedPrefer
             //Sonmetimes the arm is UNKNOWN. Then myo needs reset
             Arm arm = armByMyoMac.get(myo.getMacAddress());
             if (null == arm) {
+                Log.e(TAG, String.format("Arm is not found for myo. Reset state to not ready! myo mac:[%s], arm:[%s]", myo.getMacAddress(), armByMyoMac.get(myo.getMacAddress())));
                 onMyoNotReady(myo, timestamp);
                 return;
             }

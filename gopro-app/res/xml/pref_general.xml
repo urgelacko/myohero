@@ -34,8 +34,8 @@
     </PreferenceCategory>
 
     <Preference
-        android:summary="@string/pref_sum_myo"
-        android:title="@string/pref_cat_myo" >
+        android:summary="@string/pref_myo_scan"
+        android:title="@string/pref_desc_myo_scan" >
         <intent
             android:action="android.intent.action.MAIN"
             android:targetClass="com.thalmic.myo.scanner.ScanActivity"
